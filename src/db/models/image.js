@@ -1,19 +1,21 @@
 import mongoose from 'mongoose'
 
 const ImageSchema = new mongoose.Schema({
-    imageName: {
-        type: String
-    },
     baseUrlToDownloadImage: {
-        type: String
+        type: String,
+        required: true
     },
     downloadImageDate: {
         type: Date
     },
-    isDownloaded: {
-        type: Boolean,
-        default: false
+    status: {
+        type: String,
+        enum: ['pending', 'downloaded', 'error'],
+        default: 'pending'
     },
+    statusMessage: {
+        type: String
+    }
 }, {
     timestamps: true
 })

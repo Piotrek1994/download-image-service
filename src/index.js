@@ -18,6 +18,7 @@ connectToDatabase().then(() => {
     app.use(express.json())
 
     app.use('/api/v1', apiRouter)
+    app.use(express.static('../public'))
 
     app.listen(config.port, () => console.log(`Server started on port ${config.port}`))
     processNext()
